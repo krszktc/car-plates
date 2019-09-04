@@ -1,0 +1,47 @@
+<div *ngIf="data">
+
+  <div class="form-group form-inline searchbox-margin">
+      Full text search: <input class="form-control ml-2" type="text" name="searchTerm" 
+      [(ngModel)]="filter.value" (input)="onDebounceCriteriaChange()"/>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" sortable="_id" (sort)="onSort($event)">Plate Nr</th>
+      <th scope="col" sortable="name" (sort)="onSort($event)">Name</th>
+      <th scope="col" sortable="surname" (sort)="onSort($event)">Surname</th>
+      <th scope="col" sortable="address" (sort)="onSort($event)">Address</th>
+      <th scope="col" sortable="phone" (sort)="onSort($event)">Phone</th>
+      <th scope="col" sortable="email" (sort)="onSort($event)">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let plate of plates; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ plate._id }}</td>
+      <td>{{ plate.name }}</td>
+      <td>{{ plate.surname }}</td>
+      <td>{{ plate.address }}</td>
+      <td>{{ plate.phone }}</td>
+      <td>{{ plate.email }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" (click)="edit(plate)">Edit</button>
+        <button class="btn btn-sm btn-outline-danger btn-margin" (click)="remove(plate._id)">Remove</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="pageInfo.totalElements" [pageSize]="pageInfo.size" [(page)]="pageInfo.page" (pageChange)="onCriteriaChange()"></ngb-pagination>
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageInfo.size" (change)="onDebounceCriteriaChange()">
+      <option [ngValue]="5">5 items per page</option>
+      <option [ngValue]="10">10 items per page</option>
+      <option [ngValue]="25">25 items per page</option>
+      <option [ngValue]="50">50 items per page</option>
+      <option [ngValue]="100">100 items per page</option>
+    </select>
+  </div>
+</div>

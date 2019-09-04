@@ -1,0 +1,12 @@
+
+<div class="plates-label">
+    <h2>Car Plates</h2>
+    <button type="button" class="btn btn-primary float-rigth" (click)="addPlate()">Add Plate</button>
+</div>
+<hr>
+
+<main-table [data]="data" 
+            (onChange)="getData($event)" 
+            (onRemove)="onRemove($event)"
+            (onEdit)="onEdit($event)"></main-table>
+                  

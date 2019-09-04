@@ -1,0 +1,14 @@
+.modal-footer,
+.modal-body,
+.modal-header {
+    display: block;
+    text-align: center;
+}
+
+.modal-footer .btn-primary {
+    margin-right: 30px;
+}
+
+.modal-footer .btn-danger {
+    margin-left: 30px;
+}

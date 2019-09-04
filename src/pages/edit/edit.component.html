@@ -1,0 +1,67 @@
+<div class="form-container">
+
+  <h2>{{pageTitle}}</h2>
+  <hr>
+
+  <div class="form-fields">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Plate Nr</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate._id"
+            (input)="idChanged()" [disabled]="isEdit()" >
+    </div>
+    <div class="error-message" *ngIf="!isIdValid">Plate format shluld be like 'KRA-12345'</div>
+  
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate.name"
+            (input)="nameChanged()">
+    </div>
+    <div class="error-message" *ngIf="!isNameValid">Name can contain only characters</div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Surname</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate.surname"
+            (input)="surnameChanged()">
+    </div>
+    <div class="error-message" *ngIf="!isSurnameValid">Surnalme can contain only characters</div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Address</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate.address"
+            (input)="addressChanged()">
+    </div>
+    <div class="error-message" *ngIf="!isAddressValid">Address can not be longer than {{ADDRESS_LENGTH}} characters</div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate.phone"
+            (input)="phoneChanged()">
+    </div>
+    <div class="error-message" *ngIf="!isPhoneValid">Phone format should be like 111222333</div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="plate.email"
+            (input)="emailChanged()">
+    </div>
+    <div class="error-message" *ngIf="!isEmailValid">Wront email format</div>
+
+    <div class="conteinter-buttons">
+        <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="disableSave()">Save</button>
+    </div>
+  </div>
+
+</div>
