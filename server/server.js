@@ -28,7 +28,7 @@ app.get('/api/plates', function (req, res) {
     plateService.getPlates(res, req.query);
 })
 
-app.get('/api/delete/:id', function (req, res) {
+app.delete('/api/delete/:id', function (req, res) {
     plateService.daletePlate(res, req.params.id);
 })
 

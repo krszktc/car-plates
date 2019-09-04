@@ -19,7 +19,7 @@ export class DataService {
   }
 
   removePlate(plateId: string): Observable<any> {
-    return this.http.get<any>('/api/delete/' + plateId);
+    return this.http.delete<any>('/api/delete/' + plateId);
   }
 
   addPlate(plate: Plate): Observable<any> {
